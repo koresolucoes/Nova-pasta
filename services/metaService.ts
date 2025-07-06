@@ -1,7 +1,7 @@
 
 import { v4 as uuidv4 } from 'uuid';
 import { FlowStatus } from '../types';
-import type { MessageTemplate, AnalyticsDataPoint, WhatsAppFlow, TemplateComponent, Button, ActionSendMessageData } from '../types';
+import type { MessageTemplate, AnalyticsDataPoint, WhatsAppFlow, Button, ActionSendMessageData } from '../types';
 import { generateFlowJsonForApi } from './flowSerializer';
 import { supabase } from './supabaseClient';
 
