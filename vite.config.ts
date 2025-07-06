@@ -20,14 +20,7 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, '.'),
       }
     },
-    css: {
-      postcss: {
-        plugins: [
-          require('tailwindcss'),
-          require('autoprefixer'),
-        ],
-      },
-    },
+    // PostCSS configuration is handled by postcss.config.js
     server: {
       port: 3000,
       open: true,
