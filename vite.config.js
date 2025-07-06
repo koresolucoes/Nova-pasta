@@ -1,20 +1,30 @@
 const { defineConfig, loadEnv } = require('vite');
 const react = require('@vitejs/plugin-react').default;
 const path = require('path');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   
+  // Only expose specific environment variables to the client
+  const envWithProcessPrefix = {
+    'process.env.VITE_SUPABASE_URL': JSON.stringify(env.VITE_SUPABASE_URL || ''),
+    'process.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(env.VITE_SUPABASE_ANON_KEY || ''),
+    'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || '')
+  };
+
   return {
     plugins: [react()],
-    define: {
-      'process.env': {
-        ...env,
-        VITE_SUPABASE_URL: JSON.stringify(env.VITE_SUPABASE_URL || ''),
-        VITE_SUPABASE_ANON_KEY: JSON.stringify(env.VITE_SUPABASE_ANON_KEY || ''),
-        GEMINI_API_KEY: JSON.stringify(env.GEMINI_API_KEY || '')
-      }
+    css: {
+      postcss: {
+        plugins: [
+          tailwindcss,
+          autoprefixer,
+        ],
+      },
     },
+    define: envWithProcessPrefix,
     resolve: {
       alias: [
         { find: '@', replacement: path.resolve(__dirname, 'src') },

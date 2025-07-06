@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BellIcon, SettingsIcon, ArrowLeftOnRectangleIcon } from './icons';
-import { getActiveConnection, getConnections, setActiveConnectionId, disconnectActiveConnection, type MetaConnection } from '../src/services/metaService';
-import { searchService } from '../src/services/searchService';
+import { getActiveConnection, getConnections, setActiveConnectionId, disconnectActiveConnection, type MetaConnection } from '../services/metaService';
+import { searchService } from '../services/searchService';
 
 function Header(): React.ReactNode {
   const [isProfileOpen, setIsProfileOpen] = useState(false);

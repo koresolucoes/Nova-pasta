@@ -7,8 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "tailwind:build": "tailwindcss -i ./src/input.css -o ./dist/output.css",
-    "tailwind:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    "tailwind:build": "node generate-css.js",
+    "tailwind:watch": "node generate-css.js --watch",
+    "generate:css": "node generate-css.js",
+    "prebuild": "npm run generate:css"
   },
   "dependencies": {
     "@google/genai": "^1.8.0",
@@ -26,9 +28,9 @@
     "@types/react-dom": "^18.2.0",
     "@types/uuid": "^9.0.8",
     "@vitejs/plugin-react": "^4.6.0",
-    "autoprefixer": "^9.8.8",
-    "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
   }
