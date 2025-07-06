@@ -2,10 +2,10 @@
   "name": "wa-hub---marketing-e-campanhas",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "tailwind:build": "tailwindcss -i ./src/input.css -o ./dist/output.css",
     "tailwind:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"

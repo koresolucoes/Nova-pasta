@@ -22,9 +22,18 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
+    "baseUrl": ".",
     "paths": {
-      "@/*" :  ["./*"]
-    }
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@services/*": ["./src/services/*"],
+      "@types/*": ["./src/types/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./src/types", "./src/@types"],
+    "types": ["vite/client"]
   }
 }

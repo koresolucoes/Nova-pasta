@@ -2,9 +2,9 @@
 // Ele irá lidar com as mensagens recebidas, encontrar o contato correspondente, adicionar a mensagem à conversa,
 // e acionar quaisquer automações relevantes.
 
-import { getContacts } from '../services/contactService';
-import { addMessage } from '../services/chatService';
-import { runAutomations } from '../services/automationService';
+import { getContacts } from '../src/services/contactService';
+import { addMessage } from '../src/services/chatService';
+import { runAutomations } from '../src/services/automationService';
 
 // --- Environment Variables ---
 const { META_VERIFY_TOKEN } = process.env;
@@ -51,13 +51,16 @@ export default async function handler(req: any, res: any) {
                   
                   if (contact) {
                       // Add message to the conversation in the database
-                      await addMessage(contact.id, {
+                      // Convertendo o ID para número para garantir compatibilidade
+                      const contactId = typeof contact.id === 'string' ? parseInt(contact.id, 10) : contact.id;
+                      
+                      await addMessage(contactId, {
                           text,
                           sender: 'contact',
                           status: 'delivered',
                       });
                       // Trigger any automations based on the message content
-                      await runAutomations('context_message', { contactId: contact.id, messageText: text });
+                      await runAutomations('context_message', { contactId, messageText: text });
                       console.log(`Successfully processed message from ${contactPhone}`);
                   } else {
                       console.warn(`Received message from unknown number: ${contactPhone}. Contact not found in DB.`);

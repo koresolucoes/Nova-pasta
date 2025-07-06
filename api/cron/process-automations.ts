@@ -3,10 +3,10 @@
 // It queries for pending automation tasks and executes them.
 // To secure this endpoint, set a CRON_SECRET environment variable in your Vercel project.
 
-import { supabase } from '../../services/supabaseClient';
-import { executeAutomation, getAutomationById } from '../../services/automationService';
-import { getContactById } from '../../services/contactService';
-import { getConnectionById } from '../../services/metaService';
+import { supabase } from '../../src/services/supabaseClient';
+import { executeAutomation, getAutomationById } from '../../src/services/automationService';
+import { getContactById } from '../../src/services/contactService';
+import { getConnectionById } from '../../src/services/metaService';
 
 export default async function handler(req: any, res: any) {
     if (req.method !== 'POST') {
