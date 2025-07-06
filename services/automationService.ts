@@ -1,10 +1,9 @@
 
 import { v4 as uuidv4 } from 'uuid';
 import type {
-    Automation, AutomationNode, TriggerCrmStageChangedData, TriggerTagAddedData, AutomationTriggerType, AutomationActionType,
-    Contact, Condition, ActionSendMessageData, ActionWaitData, ActionAddTagData, ActionRemoveTagData,
-    ActionMoveCrmStageData, ActionConditionalData, ActionHttpRequestData, ActionOptOutData, ActionRandomizerData, ActionForwardAutomationData, TriggerContextMessageData,
-    MessageTemplate,
+    Automation, AutomationNode, TriggerTagAddedData, AutomationTriggerType, TriggerCrmStageChangedData,
+    Contact, ActionSendMessageData, ActionWaitData, ActionAddTagData, ActionRemoveTagData,
+    ActionMoveCrmStageData, ActionConditionalData, ActionHttpRequestData, ActionForwardAutomationData, TriggerContextMessageData,
     AutomationActionData
 } from '../types';
 import { AutomationStatus } from '../types';
@@ -20,7 +19,7 @@ export async function getAutomations(): Promise<Automation[]> {
         console.error("Error fetching automations:", error);
         throw new Error(error.message);
     }
-    return (data || []).map(a => ({
+    return (data || []).map((a: any) => ({
         id: a.id,
         name: a.name,
         status: a.status as AutomationStatus,

@@ -2,7 +2,6 @@
 // Ele irá lidar com as mensagens recebidas, encontrar o contato correspondente, adicionar a mensagem à conversa,
 // e acionar quaisquer automações relevantes.
 
-import { supabase } from '../services/supabaseClient';
 import { getContacts } from '../services/contactService';
 import { addMessage } from '../services/chatService';
 import { runAutomations } from '../services/automationService';
